@@ -1,5 +1,5 @@
-// type Props = {};
+import { SignInCard } from "@/features/auth/components/sign-in-card";
 
 export default function SignInPage() {
-  return <div>sign in page</div>;
+  return <SignInCard />;
 }
