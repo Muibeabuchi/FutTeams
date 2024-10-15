@@ -60,8 +60,8 @@ export function SignInCard() {
                       type="email"
                       placeholder="Enter Email address"
                     />
-                    <FormMessage />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -76,8 +76,8 @@ export function SignInCard() {
                       type="password"
                       placeholder="Enter Password"
                     />
-                    <FormMessage />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />

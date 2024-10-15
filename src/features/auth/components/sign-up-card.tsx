@@ -54,11 +54,11 @@ export function SignUpCard() {
           By signing up you agree to our {""}
           <Link href="">
             <span className="text-blue-700">Privacy policy</span>
-          </Link>{" "}
+          </Link>
           and {""}
           <Link href="">
             <span className="text-blue-700">Terms of Service</span>
-          </Link>{" "}
+          </Link>
         </CardDescription>
       </CardHeader>
       <div className="px-7 ">
@@ -78,8 +78,8 @@ export function SignUpCard() {
                       type="text"
                       placeholder="Enter your Name"
                     />
-                    <FormMessage />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -94,8 +94,8 @@ export function SignUpCard() {
                       type="email"
                       placeholder="Enter Email address"
                     />
-                    <FormMessage />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -110,8 +110,8 @@ export function SignUpCard() {
                       type="password"
                       placeholder="Enter your Password"
                     />
-                    <FormMessage />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
