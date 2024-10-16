@@ -6,11 +6,18 @@ import { loginSchema, signupSchema } from "../schemas";
 import { zValidator } from "@hono/zod-validator";
 import { createAdminClient } from "@/lib/appwrite";
 import { AUTH_COOKIE } from "../constants";
+import { sessionMiddleware } from "@/lib/session-middleware";
 
 const validator = zValidator("json", loginSchema);
 const signupValidator = zValidator("json", signupSchema);
 
 const app = new Hono()
+  .get("/current", sessionMiddleware, async (c) => {
+    const user = c.get("user");
+    // const user = await account.get();
+    // if (!user) return c.json({ error: "No user" });
+    return c.json({ data: user }, 201);
+  })
   .post("/login", validator, async (c) => {
     const { email, password } = c.req.valid("json");
     const { account } = createAdminClient();
@@ -42,10 +49,11 @@ const app = new Hono()
 
     return c.json({ success: true }, 201);
   })
-  .post("/logout", async (c) => {
+  .post("/logout", sessionMiddleware, async (c) => {
+    const account = c.get("account");
     deleteCookie(c, AUTH_COOKIE);
-    // const { account } = createAdminClient();
-    // await account.deleteSession("current");
+    await account.deleteSession("current");
+
     // return c.json({
     //   success: true,
     // });
