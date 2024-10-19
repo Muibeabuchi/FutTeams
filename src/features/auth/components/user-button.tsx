@@ -16,6 +16,8 @@ import { useCurrent } from "../api/use-current";
 
 export const UserButton = () => {
   const { data: user, isLoading: loadingUser } = useCurrent();
+
+  console.log(user);
   const { mutate: logOut } = useLogout();
 
   if (loadingUser) {
