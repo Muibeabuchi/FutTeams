@@ -21,11 +21,9 @@ import {
 import Link from "next/link";
 import { loginSchema } from "../schemas";
 import { useLogin } from "../api/use-login";
-import { useRouter } from "next/navigation";
 
 export function SignInCard() {
   const { mutate, isPending: isSigningIn } = useLogin();
-  const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -36,17 +34,7 @@ export function SignInCard() {
   });
 
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    mutate(
-      { json: values },
-      {
-        onSuccess() {
-          router.refresh();
-        },
-        onError() {
-          console.log("There was an error logging you in");
-        },
-      }
-    );
+    mutate({ json: values });
   };
 
   return (
