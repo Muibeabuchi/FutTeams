@@ -14,6 +14,7 @@ const signupValidator = zValidator("json", signupSchema);
 const app = new Hono()
   .get("/current", sessionMiddleware, async (c) => {
     const user = c.get("user");
+
     // const user = await account.get();
     // if (!user) return c.json({ error: "No user" });
     return c.json({ data: user }, 201);
@@ -54,8 +55,6 @@ const app = new Hono()
     deleteCookie(c, AUTH_COOKIE);
     await account.deleteSession("current");
 
-    // return c.json({
-    //   success: true,
-    // });
+    return c.json({ success: true });
   });
 export default app;

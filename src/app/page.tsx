@@ -14,7 +14,6 @@ export default async function Home() {
       <div>
         <UserButton />
       </div>
-      {/* <Button onClick={() => mutate()}>Logout</Button> */}
     </>
   );
 }

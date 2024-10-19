@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -29,6 +30,7 @@ import { signupSchema } from "../schemas";
 import { useRegister } from "../api/use-register";
 
 export function SignUpCard() {
+  const router = useRouter();
   const { mutate } = useRegister();
 
   const form = useForm<z.infer<typeof signupSchema>>({
@@ -46,10 +48,10 @@ export function SignUpCard() {
       {
         onSuccess: () => {
           form.reset();
+          router.refresh();
         },
       }
     );
-    console.log(values);
   };
 
   return (

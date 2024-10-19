@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { DottedSeparator } from "@/components/doted-separator";
 
 import { useLogout } from "../api/use-logout";
@@ -26,8 +25,6 @@ export const UserButton = () => {
       </div>
     );
   }
-
-  //   const { name, email } = user;
 
   if (!user) return null;
 
