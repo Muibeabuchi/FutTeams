@@ -40,7 +40,7 @@ const AppwriteEnvSchema = z.object({
   workspaceId: z.string(),
 });
 
-export const AppwriteEnv = AppwriteEnvSchema.safeParse({
+export const AppwriteEnvData = AppwriteEnvSchema.parse({
   databaseId: process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
   workspaceId: process.env.NEXT_PUBLIC_APPWRITE_WORKSPACES_ID,
 });
