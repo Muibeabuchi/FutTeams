@@ -1,4 +1,6 @@
 import { SettingsIcon, UsersIcon } from "lucide-react";
+import { z } from "zod";
+
 import {
   GoCheckCircle,
   GoCheckCircleFill,
@@ -32,3 +34,13 @@ export const Routes = [
     Icon: UsersIcon,
   },
 ];
+
+const AppwriteEnvSchema = z.object({
+  databaseId: z.string(),
+  workspaceId: z.string(),
+});
+
+export const AppwriteEnv = AppwriteEnvSchema.safeParse({
+  databaseId: process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+  workspaceId: process.env.NEXT_PUBLIC_APPWRITE_WORKSPACES_ID,
+});
