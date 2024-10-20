@@ -11,14 +11,14 @@ const app = new Hono().post(
   sessionMiddleware,
   async (c) => {
     const databases = c.get("databases");
-    // const user = c.get("user");
+    const user = c.get("user");
     const { name } = c.req.valid("json");
 
     const workspace = await databases.createDocument(
       AppwriteEnvData.databaseId,
       AppwriteEnvData.workspaceId,
       ID.unique(),
-      { name }
+      { name, userId: user.$id }
     );
 
     return c.json({ data: workspace });
